@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Beérkezett üzenetek{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Név</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Üzenet</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for message in messages %}
+                        <tr>
+                            <th scope="row">
+                            <a href="/messages/{{ message.id }}">
+                                {{ message.id }}
+                            </a>
+                            </th>
+                            <td> {{ message.getWriterName() }} </td>
+                            <td> {{ message.getWriterEmail() }} </td>
+                            <td> {{ message.getMessageText() }} </td>
+                        </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+
+
+
+{% endblock %}
